@@ -1303,6 +1303,46 @@ classdef PhreeqcRM
             %}
             status = calllib(obj.libName,'RM_SetConcentrations', obj.id, c);
         end
+
+        function status = RM_SetPPAssemblageMoles(obj, moles)
+            %{
+            %}
+            status = calllib(obj.libName,'RM_SetPPAssemblageMoles', obj.id, moles);
+        end
+
+        function status = RM_SetPPAssemblageSI(obj, si)
+            %{
+            %}
+            status = calllib(obj.libName,'RM_SetPPAssemblageSI', obj.id, si);
+        end
+
+        function ncomps = RM_GetPPAssemblageCount(obj)
+            %{
+            ncomps number of components currently in the list of PPAssemblage. 
+            %}
+            ncomps = calllib(obj.libName,'RM_GetPPAssemblageCount', obj.id);
+        end
+
+        function [status, name] = RM_GetPPAssemblageComp(obj, i, name, l)
+            %{
+                get the list of components available in the PPAssemblage list
+            %}
+            [status, name] = calllib(obj.libName,'RM_GetPPAssemblageComp', obj.id, i, name, l);
+        end
+        
+        function name = GetPPAssemblageComps(obj)
+            %{
+            %}
+            
+            obj.RM_SetSpeciesSaveOn(1);
+            obj.RM_FindComponents(); % must run to update species list
+            ncomps = obj.RM_GetPPAssemblageCount();
+            name = cell(ncomps, 1);
+            for i=1:ncomps
+                name{i} = blanks(21);
+                [~, name{i}] = obj.RM_GetPPAssemblageComp(i-1, name{i}, length(name{i}));
+            end
+        end
         
         function status = RM_SetCurrentSelectedOutputUserNumber(obj, n_user)
             %{

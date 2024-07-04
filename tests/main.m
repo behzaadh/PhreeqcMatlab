@@ -7,3 +7,5 @@ run('Species.m');
 disp('Done Species.===================================');
 run('Gas_m.m');
 disp('Done Gas.===================================');
+run('barite.m');
+disp('Done barite.===================================');

@@ -1,0 +1,36 @@
+PHASES
+Fix_H+
+H+ = H+
+log_k  0.0
+END
+
+SOLUTION 1-10 Pure water
+        pH      7.0
+        temp    25.0     
+		S 		1.0     
+		C		1.0  
+		Ca		1.0
+		Na		1.0
+		Cl		1.0
+		Ba		1.0
+
+SAVE SOLUTION 1
+END
+
+EQUILIBRIUM_PHASES 1-10
+Halite  0.0			0	   
+Calcite 1.0 		10 
+Barite  0.0 		0
+Gypsum 	0.0 		0
+Anhydrite 0.0 		0
+
+SAVE EQUILIBRIUM_PHASES 1
+END
+
+SELECTED_OUTPUT 1
+        -reset false
+		-ph    true
+		-equilibrium_phases   Calcite Halite Barite Gypsum Anhydrite
+		
+
+END
