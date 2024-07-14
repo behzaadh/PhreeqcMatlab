@@ -7,7 +7,7 @@
 #include "Var.h"
 
 /**
- * @mainpage IPhreeqc Library Documentation (3.7.3-15968)
+ * @mainpage IPhreeqc Library Documentation (@PHREEQC_VER@-@REVISION_SVN@)
  *
  *  @htmlonly
  *  <table>
@@ -1672,9 +1672,9 @@ Headings
  *  FUNCTION SetBasicFortranCallback(ID,FCN)
  *    INTEGER(KIND=4),  INTENT(IN)  :: ID
  *    INTERFACE
- *      DOUBLE PRECISION FUNCTION FCN(x1, x2, str)
- *        DOUBLE PRECISION, INTENT(in) :: x1
- *        DOUBLE PRECISION, INTENT(in) :: x2
+ *      real(kind=8) FUNCTION FCN(x1, x2, str)
+ *        real(kind=8), INTENT(in) :: x1
+ *        real(kind=8), INTENT(in) :: x2
  *        CHARACTER(*), INTENT(in)     :: str
  *      END FUNCTION
  *    END INTERFACE

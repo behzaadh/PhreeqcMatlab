@@ -30,14 +30,13 @@ ic2 = -1*ones(nCells*7, 1);
 f1 = ones(nCells*7, 1);
 for i = 1:nCells
     ic1(i) = 1;              % Solution 1
-    ic1(1*nCells + i) = +1;    % Equilibrium phases
+    ic1(1*nCells + i) = i;    % Equilibrium phases
     ic1(2*nCells + i) = -1;    % Exchange 1
     ic1(3*nCells + i) = -1;    % Surface none
     ic1(4*nCells + i) = -1;    % Gas phase none
     ic1(5*nCells + i) = -1;    % Solid solutions none
     ic1(6*nCells + i) = -1;    % Kinetics none
 end
-status = phreeqc_rm.RM_InitialPhreeqc2Module(ic1, ic2, f1);
 
 nPPAssemblage = phreeqc_rm.RM_GetPPAssemblageCount();
 PPAssemblageComps = phreeqc_rm.GetPPAssemblageComps();
@@ -46,6 +45,7 @@ status = phreeqc_rm.RM_SetPPAssemblageMoles(moles);
 si = moles/10;
 status = phreeqc_rm.RM_SetPPAssemblageSI(si);
 
+status = phreeqc_rm.RM_InitialPhreeqc2Module(ic1, ic2, f1);
 
 nComps = phreeqc_rm.RM_FindComponents();
 names_comps = phreeqc_rm.GetComponents()';
